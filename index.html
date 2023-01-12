@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <!-- <link rel="icon" href="/favicon.ico" sizes="any"> -->
+  <!-- <link rel="icon" href="/icon.svg" type="image/svg+xml"> -->
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://unpkg.com/ejs@3.1.8/ejs.min.js"></script>
+  <style>
+    .overlay-target {
+        position: relative;
+        display: inline-block;
+    }
+    .overlay-content {
+        visibility: hidden;
+        position: absolute;
+        /* z-index: 1; */
+    }
+    .overlay-target:hover .overlay-content {
+        visibility: visible;
+        background-color: lightgray;
+    }
+  </style>
+</head>
+
+<body>
+    <h1>Dev X periments!</h1>
+    <div class="overlay-target">
+        <button>Toggle Overlay Content</button>
+        <div class="overlay-content">
+            <p>Overlay Content:</p>
+            <table class="w3-table w3-striped">
+                <caption>Table of Info</caption>
+                <thead>
+                    <tr class="w3-blue">
+                        <th>Col 1</th>
+                        <th>Col 2</th>
+                        <th>Col 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cell 1</td>
+                        <td>Cell 2</td>
+                        <td>Cell 3</td>
+                    </tr>
+                    <tr>
+                        <td>Cell 4</td>
+                        <td>Cell 5</td>
+                        <td>Cell 6</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Footer</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div>
+        <fieldset>
+            <legend>select fieldset</legend>
+            <label for="select-input-id">select label:</label>
+            <select
+                id="select-input-id"
+                name="select-input-name"
+                type="select"
+                placeholder="select placeholder text"
+                value="select value text"
+                style="width: 500px;"
+            >
+                <option></option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">4</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+        </fieldset>
+    </div>
+    <div id="examples-slot"></div>
+    <script>
+        const types = [
+            'button',
+            'checkbox',
+            'color',
+            'date',
+            'datetime-local',
+            'email',
+            'file',
+            'hidden',
+            'image',
+            'month',
+            'number',
+            'password',
+            'radio',
+            'range',
+            'reset',
+            'search',
+            'submit',
+            'tel',
+            'text',
+            'time',
+            'url',
+            'week'
+        ];
+        let template = '';
+        for (let i = 0; i < types.length; i++) {
+            const type = types[i];
+            template += `
+<fieldset>
+    <legend>${type} fieldset</legend>
+    <label for="${type}-input-id">${type} label:</label>
+    <input
+        id="${type}-input-id"
+        name="${type}-input-name"
+        type="${type}"
+        placeholder="${type} placeholder text"
+        value="${type} value text"
+        ${type === 'file' ? 'accept="image/*"' : ''}
+        ${type === 'image' ? 'alt="image is here"' : null}
+    >
+</fieldset>`;
+        } 
+        
+        // let html = ejs.render('<%= types.join(", "); %>', {types: types});
+        document.getElementById('examples-slot').innerHTML = template;
+      </script>
+      <style>
+        input,
+        textarea {
+            -webkit-appearance: none;
+            -moz-appearance:    none;
+            -ms-appearance:     none;
+            -o-appearance:      none;
+            appearance:         none;
+            background: lightgray;
+            border: none;
+            /* box-shadow: none ; */
+            /* box-shadow: none !important; */
+            outline: none;
+        }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+        }
+        /* input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border: none;
+        }
+        input:-webkit-autofill,
+        textarea:-webkit-autofill {
+            background: #fff !important;
+            color: #fff !important;
+        } */
+      </style>
+</body>
+
+</html>
